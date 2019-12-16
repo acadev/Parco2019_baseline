@@ -1,4 +1,4 @@
-from tasks import run_omm_with_celery, run_omm_with_celery_fs_pep, run_cvae_with_celery, run_omm_with_celery_implicit
+from tasks import run_omm_with_celery, run_omm_with_celery_fs_pep, run_cvae_with_celery 
 from celery.bin import worker
 import numpy as np
 import threading, h5py
@@ -141,12 +141,7 @@ class omm_job(object):
         A function to start the job and store the `class :: celery.result.AsyncResult` 
         in the omm_job.job 
         """
-        if self.implicit_water: 
-            sim_job = run_omm_with_celery_implicit.delay(self.job_id, self.gpu_id,
-                                                        self.top_file, self.pdb_file,
-                                                        self.check_point)
-            print('utils', self.job_id, self.gpu_id, self.top_file, self.pdb_file, self.check_point) 
-        elif self.top_file: 
+        if self.top_file: 
             sim_job = run_omm_with_celery.delay(self.job_id, self.gpu_id, 
                                                 self.top_file, self.pdb_file,
                                                 self.check_point) 
