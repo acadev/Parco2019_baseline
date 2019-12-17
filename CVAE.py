@@ -2,7 +2,7 @@ import os, sys, h5py
 
 # from keras.optimizers import RMSprop
 
-from molecules.ml.unsupervised.vae_conv import conv_variational_autoencoder
+from vae_conv import conv_variational_autoencoder
 # sys.path.append('/home/hm0/Research/molecules/molecules_git/build/lib')
 # from molecules.ml.unsupervised import VAE
 # from molecules.ml.unsupervised import EncoderConvolution2D

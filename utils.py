@@ -7,7 +7,6 @@ import warnings
 from sklearn.cluster import DBSCAN
 import MDAnalysis as mda
 from keras import backend as K
-from molecules.utils.matrix_op import triu_to_full
 
 from CVAE import CVAE
 
@@ -320,3 +319,14 @@ def outliers_from_latent(cm_predict, eps=0.35):
     db_label = db.labels_            
     outlier_list = np.where(db_label == -1)                
     return outlier_list
+
+def triu_to_full(cm0):
+    num_res = int(np.ceil((len(cm0) * 2) ** 0.5))
+    iu1 = np.triu_indices(num_res, 1)
+
+    cm_full = np.zeros((num_res, num_res))
+    cm_full[iu1] = cm0
+    cm_full.T[iu1] = cm0
+    np.fill_diagonal(cm_full, 1)
+
+    return cm_full
