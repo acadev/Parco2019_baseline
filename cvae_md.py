@@ -16,7 +16,6 @@ from utils import start_rabbit, start_worker, start_flower_monitor, read_h5py_fi
 from utils import find_frame, write_pdb_frame, make_dir_p, job_list, outliers_from_latent, predict_from_cvae
 from utils import omm_job, cvae_job 
 
-from CVAE import CVAE
 
 # n_gpus = 16
 # number of cvae jobs, starting from hyper_dim 3 
