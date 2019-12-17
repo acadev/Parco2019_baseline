@@ -160,10 +160,9 @@ def openmm_simulate_amber_fs_pep(pdb_file, check_point=None, GPU_index=0,
         output_traj="output.dcd", output_log="output.log", output_cm=None,
         report_time=10*u.picoseconds, sim_time=10*u.nanoseconds):
     """
-    Start and run an OpenMM NVT simulation with Langevin integrator at 2 fs 
+    Start and run an OpenMM implicit solvent simulation with Langevin integrator at 2 fs 
     time step and 300 K. The cutoff distance for nonbonded interactions were 
-    set at 1.2 nm and LJ switch distance at 1.0 nm, which commonly used with
-    Charmm force field. Long-range nonbonded interactions were handled with PME.  
+    set at 1.0 nm.  
 
     Parameters
     ----------
@@ -213,7 +212,7 @@ def openmm_simulate_amber_fs_pep(pdb_file, check_point=None, GPU_index=0,
     simulation = app.Simulation(pdb.topology, system, integrator, platform, properties)
     
     pdb_index = random.randint(0, len(pdb.get_coordinates())-1)
-    simulation.context.setPositions(pdb.get_coordinates()[pdb_index])
+    simulation.context.setPositions(pdb.get_coordinates()[pdb_index] / 10)
 
     simulation.context.setVelocitiesToTemperature(300 * u.kelvin) 
 
