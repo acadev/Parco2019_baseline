@@ -22,4 +22,4 @@ The code is to run interactive Molecular Dynamics (MD) simulations supervised by
 
 ## Dependencies 
 
-A container that was tested with the workflow can be requested from the author. 
+A container that was tested with the workflow is [available](https://anl.box.com/s/gy9tpf7usdgs771tyn0l872hneyc1708). 
