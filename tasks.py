@@ -1,12 +1,12 @@
 from celery import Celery
 import simtk.unit as u 
-from CVAE import run_cvae 
+from py_modules.CVAE import run_cvae 
 from keras import backend as K
 import sys, os, shutil, gc 
 import errno 
 
 # sys.path.append('/home/hm0/Research/molecules/molecules_git/build/lib')
-from omm_sim import openmm_simulate_charmm_nvt, openmm_simulate_amber_fs_pep
+from py_modules.openmm_simulation import openmm_simulate_charmm_nvt, openmm_simulate_amber_fs_pep
 
 app = Celery('tasks', broker='pyamqp://guest@localhost//', backend='rpc://', broker_pool_limit = None) 
 

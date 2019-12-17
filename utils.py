@@ -8,7 +8,7 @@ from sklearn.cluster import DBSCAN
 import MDAnalysis as mda
 from keras import backend as K
 
-from CVAE import CVAE
+from py_modules.CVAE import CVAE
 
 def read_h5py_file(h5_file): 
     cm_h5 = h5py.File(h5_file, 'r', libver='latest', swmr=True)
